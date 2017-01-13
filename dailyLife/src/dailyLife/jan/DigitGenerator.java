@@ -12,12 +12,20 @@ public class DigitGenerator {
 
         for (Integer i = 1; i <= n; i++) {
             int sum = i;
-            String temp = i.toString();
-            char[] temps = temp.toCharArray();
+            int divNumber = i;
 
-            for (int j = 0; j < temps.length; j++) {
-                sum += Integer.parseInt(String.valueOf(temps[j]));
+            while (true) {
+                if (divNumber > 10) {
+                    int tempNumber = divNumber / 10;
+                    sum += divNumber - tempNumber * 10;
+                    divNumber = tempNumber;
+
+                } else {
+                    sum += divNumber % 10;
+                    break;
+                }
             }
+
             if (sum == n) {
                 System.out.println(i);
                 nFind = false;
