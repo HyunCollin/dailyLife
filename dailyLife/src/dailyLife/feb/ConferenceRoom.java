@@ -4,8 +4,6 @@ package dailyLife.feb;
 import java.util.Scanner;
 
 public class ConferenceRoom {
-	private static int fStartTime = 0;
-	private static int totalCnt = 0;
 	private static int conferenceNum = 0;
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
@@ -21,42 +19,32 @@ public class ConferenceRoom {
 				
 		sortOrderAsc(roomTime);
 		
-		boolean isEnd = false;
-		while( !isEnd ){
-			isEnd = printEndTimeSeq(roomTime);
-		}
+		printEndTimeSeq(roomTime);
+		
 		scanner.close();
 	}
 
-	private static boolean printEndTimeSeq(int[][] roomTime) {
-		int tempIndex = -1;
-		int fEndTime = 2147483647;
-		boolean isEnd = false;
+	private static void printEndTimeSeq(int[][] roomTime) {
+		int fStartTime = 0;
+		int totalCnt = 0;
 		for (int i = 0; i < conferenceNum; i++) {
-			if( roomTime[i][1] <= fEndTime && roomTime[i][0] >= fStartTime ){
-				tempIndex = i;
-				fEndTime = roomTime[i][1];
+			if(roomTime[i][0] >= fStartTime){
+//				System.out.println(roomTime[i][0] + ", " + roomTime[i][1]);
+				totalCnt++;
+				fStartTime = roomTime[i][1];
 			}
 		}
-		if(tempIndex >= 0){
-			fStartTime = roomTime[tempIndex][1];
-			totalCnt++;
-		}else{
-			System.out.println(totalCnt);
-			isEnd = true;
-		}
-		return isEnd;		
+		System.out.println(totalCnt);
 	}
 	
 	private static void sortOrderAsc(int[][] maps) {
 		for (int i = 0; i < conferenceNum; i++) {
-			int frInt = maps[i][1];
+			int compare = maps[i][1];
 			int tIndex = 0;
 			
 			for (int j = i; j < conferenceNum; j++) {
-				int backInt = maps[j][1];
-				if(frInt >= backInt){
-					frInt = backInt;
+				if(compare >= maps[j][1]){
+					compare = maps[j][1];
 					tIndex = j;
 				}
 			}
