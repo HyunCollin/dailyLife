@@ -12,7 +12,7 @@ public class JsonCompare {
 //		String oldAPI = scanner.nextLine();//{"test":[{"name":"a","type":"b"},{"name":"ab","type":"c"},{"name":"abc","type":"cd"},{"name":"zz","type":"f"}]}
 //		String newAPI = scanner.nextLine();//{"test":[{"name":"zz","type":"f"},{"name":"a","type":"b"},{"name":"abc","type":"cd"},{"name":"ab","type":"c"}]}
 		try {
-
+			//jar.file downlink == > http://huskdoll.tistory.com/6       
 			JSONParser jsonParser = new JSONParser();
 
 			// JSON데이터를 넣어 JSON Object 로 만들어 준다.
